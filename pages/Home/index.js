@@ -95,26 +95,15 @@ const App = () => {
           Gender: gender,
         } = values;
 
-        // Format the date of birth to display in B.E. format
-        const dateOfBirthBE = formatBuddhistEraDate(
-          selectedValue?.format('DD-MM-YYYY')
-        );
-
-        // Convert the year from A.D. to B.E.
-        const dateOfBirthBEDisplay = dateOfBirthBE.replace(
-          /(\d{4})$/,
-          (match, year) => {
-            const buddhistEraYear = parseInt(year, 10) + 543;
-            return buddhistEraYear.toString();
-          }
-        );
+        const date = new Date(selectedValue);
+        const formattedDate = date.toLocaleDateString('en-GB');
 
         router.push({
           pathname: '/result',
           query: {
             name,
             idCardNumber,
-            dateOfBirth: dateOfBirthBE,
+            dateOfBirth: formattedDate,
             gender,
           },
         });

@@ -14,15 +14,14 @@ const Result = () => {
   };
 
   const calculateAge = () => {
-    const currentDate = new Date();
+    const currentDate = new Date('2023-06-01'); // Assuming currentDate is 1/06/2023
     const [day, month, year] = dateOfBirth.split('/');
 
     const birthDate = new Date(`${year}-${month}-${day}`);
 
     const ageInMonths =
-      currentDate.getMonth() -
-      birthDate.getMonth() +
-      12 * (currentDate.getFullYear() - birthDate.getFullYear());
+      (currentDate.getFullYear() - birthDate.getFullYear()) * 12 +
+      (currentDate.getMonth() - birthDate.getMonth());
 
     const isAgeAgree =
       (ageInMonths >= 6 && ageInMonths <= 24) || ageInMonths >= 65;
@@ -35,12 +34,33 @@ const Result = () => {
 
   const { ageStatus, highlightColor } = calculateAge();
 
+  const buddhistMonths = [
+    'มกราคม',
+    'กุมภาพันธ์',
+    'มีนาคม',
+    'เมษายน',
+    'พฤษภาคม',
+    'มิถุนายน',
+    'กรกฎาคม',
+    'สิงหาคม',
+    'กันยายน',
+    'ตุลาคม',
+    'พฤศจิกายน',
+    'ธันวาคม',
+  ];
+
+  const day = parseInt(dateOfBirth.split('/')[0], 10);
+  const monthIndex = parseInt(dateOfBirth.split('/')[1], 10) - 1;
+  const buddhistYear = parseInt(dateOfBirth.split('/')[2], 10) + 543;
+
+  const updatedDateOfBirth = `${day} ${buddhistMonths[monthIndex]} ${buddhistYear}`;
+
   return (
     <div>
       <h1>Result Page</h1>
       <p>Name: {name}</p>
       <p>ID Card Number: {idCardNumber}</p>
-      <p>Date of Birth: {dateOfBirth}</p>
+      <p>Date of Birth: {updatedDateOfBirth}</p>
       <p>Gender: {gender}</p>
       <p>
         Status: <span style={{ color: highlightColor }}>{ageStatus}</span>
