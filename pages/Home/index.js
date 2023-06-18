@@ -1,13 +1,4 @@
-import {
-  Alert,
-  Button,
-  Calendar,
-  Form,
-  Input,
-  Modal,
-  Select,
-  Space,
-} from 'antd';
+import { Button, Calendar, Form, Input, Modal, Select, Space } from 'antd';
 import moment from 'moment';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
@@ -115,11 +106,6 @@ const App = () => {
 
   const handleCancel = () => {
     setIsModalOpen(false);
-  };
-
-  const formatBuddhistEraDate = (date) => {
-    const buddhistEraYear = moment(date).year() + 543;
-    return moment(date).format(`DD/MM/${buddhistEraYear}`);
   };
 
   const handleReset = () => {

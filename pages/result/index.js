@@ -24,7 +24,7 @@ const Result = () => {
       (currentDate.getMonth() - birthDate.getMonth());
 
     const isAgeAgree =
-      (ageInMonths >= 6 && ageInMonths <= 24) || ageInMonths >= 65;
+      (ageInMonths >= 6 && ageInMonths <= 24) || ageInMonths >= 780;
 
     return {
       ageStatus: isAgeAgree ? 'Allowed' : 'Not allowed',
