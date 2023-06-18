@@ -14,7 +14,7 @@ const Result = () => {
   };
 
   const calculateAge = () => {
-    const currentDate = new Date('2023-06-01'); // Assuming currentDate is 1/06/2023
+    const currentDate = new Date('2023-06-01'); // Assuming currentDate is 1/06/2023 for if
     const [day, month, year] = dateOfBirth.split('/');
 
     const birthDate = new Date(`${year}-${month}-${day}`);
